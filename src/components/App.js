@@ -1,7 +1,13 @@
 import React from 'react'
+import Counter from '../containers/Counter'
 
 const App = () => {
-  return <h1>hello from App.js</h1>
+  return (
+    <div>
+      <h1>Counter</h1>
+      <Counter />
+    </div>
+  )
 }
 
 export default App
