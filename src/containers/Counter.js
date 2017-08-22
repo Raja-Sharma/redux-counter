@@ -1,16 +1,25 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { increment } from '../actions/index'
+import { decrement } from '../actions/index'
 
 class Counter extends Component {
   render() {
     return (
       <div>
         <div>{this.props.count}</div>
-        <button>-</button>
-        <button>+</button>
+        <button
+          onClick={this.props.decrement}>-</button>
+        <button
+          onClick={this.props.increment}>+</button>
       </div>
     )
   }
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ increment: increment, decrement: decrement }, dispatch)
 }
 
 function mapStateToProps(state) {
@@ -19,4 +28,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(Counter)
+export default connect(mapStateToProps, mapDispatchToProps)(Counter)
